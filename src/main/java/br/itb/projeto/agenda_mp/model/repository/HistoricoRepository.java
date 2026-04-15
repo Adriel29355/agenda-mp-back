@@ -16,4 +16,8 @@ public interface HistoricoRepository extends JpaRepository<Historico, Long> {
     @Modifying
     @Query("DELETE FROM Historico h WHERE h.agenda.id = :agendaId")
     void deleteByAgendaId(Long agendaId);
+
+    @Modifying
+    @Query("DELETE FROM Historico h WHERE h.medicamento.id = :medicamentoId")
+    void deleteByMedicamentoId(Long medicamentoId);
 }

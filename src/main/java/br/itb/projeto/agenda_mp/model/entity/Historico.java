@@ -35,12 +35,12 @@ public class Historico {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "medicamento_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "agenda"})
     private Medicamento medicamento;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agenda_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "usuario"})
     private Agenda agenda;
 
     public Historico() {}

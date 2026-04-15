@@ -3,9 +3,11 @@ package br.itb.projeto.agenda_mp.service;
 import br.itb.projeto.agenda_mp.model.entity.Medicamento;
 import br.itb.projeto.agenda_mp.model.entity.Agenda;
 import br.itb.projeto.agenda_mp.model.repository.AgendaRepository;
+import br.itb.projeto.agenda_mp.model.repository.HistoricoRepository;
 import br.itb.projeto.agenda_mp.model.repository.MedicamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +20,9 @@ public class MedicamentoService {
 
     @Autowired
     private AgendaRepository agendaRepository;
+
+    @Autowired
+    private HistoricoRepository historicoRepository;
 
     public List<Medicamento> findAll() {
         return medicamentoRepository.findAll();
@@ -54,7 +59,9 @@ public class MedicamentoService {
         return medicamentoRepository.save(medicamento);
     }
 
+    @Transactional
     public void deleteById(Long id) {
+        historicoRepository.deleteByMedicamentoId(id);
         medicamentoRepository.deleteById(id);
     }
 }

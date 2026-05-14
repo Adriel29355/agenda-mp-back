@@ -1,6 +1,7 @@
 package br.itb.projeto.agenda_mp.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -20,6 +21,7 @@ public class Agenda {
     private String dosagem;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime horario;
 
     @Column(nullable = false)

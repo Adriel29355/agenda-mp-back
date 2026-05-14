@@ -1,6 +1,7 @@
 package br.itb.projeto.agenda_mp.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -23,6 +24,7 @@ public class Historico {
     private String observacoes;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "HH:mm")
     private LocalTime horario;
 
     // Data/hora em que o uso foi confirmado
